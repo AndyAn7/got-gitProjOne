@@ -46,7 +46,7 @@ var init = function () {
   $zipModal.hide();
   geocode({ address: getZip });
   getAgZone(getZip);
-}
+};
 
 
 
@@ -87,7 +87,7 @@ var getCommunityGardens = function (requestLocation) {
       }
     }
   });
-}
+};
 
 var geocode = function (request) {
   clear();
@@ -107,19 +107,19 @@ var geocode = function (request) {
     .catch((e) => {
       alert("Geocode was not successful for the following reason: " + e);
     });
-}
+};
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
   for (let i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
   }
-}
+};
 
 var clear = function () {
   setMapOnAll(null);
   markers = [];
-}
+};
 
 
 // ZIPCODE INPUT
@@ -135,36 +135,42 @@ searchBtn.addEventListener("click", function (event) {
   } else {
 
     console.log(getZip);
-    // this is optional, if we don't want to store zipcodes we can scratch this
+    // stores zipcodes
     localStorage.setItem("zip", getZip);
     geocode({ address: getZip });
     getAgZone(getZip);
-    if ($zipModal.css('visibility') === 'hidden') {
-      $zipModal.css('visibility', 'visible');
-    } else {
-      $zipModal.css('visibility', 'hidden');
-    }
+    // if ($zipModal.css('visibility') === 'hidden') {
+    //   $zipModal.css('visibility', 'visible');
+    // } else {
+    //   $zipModal.css('visibility', 'hidden');
+    // }
   }
 });
   
   var show = function() {
   paraP = document.getElementById('hidden');
-}
+};
 
 // API to pull agricultural zone
 var getAgZone = function (getZip) {
   // stitch the zipcode into the API URL
-  var agURL = "https://c0bra.api.stdlib.com/zipcode-to-hardiness-zone/?zipcode=" + getZip;
-  console.log(agURL);
-  fetch(agURL)
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Host': 'plant-hardiness-zone.p.rapidapi.com',
+      'X-RapidAPI-Key': 'f720bff0aemsh09e18b403689183p139bd3jsn8f600209aac2'
+    }
+  };
+  const agURL = `https://plant-hardiness-zone.p.rapidapi.com/zipcodes/${getZip}`;
+  fetch(agURL, options)
   .then(function (response) {
     return response.json();
   })
   .then(function(data) {
     console.log(data)
-    zoneResults.textContent = "You live in Zone " + data.zone + "!";
+    zoneResults.textContent = "You live in Zone " + data.hardiness_zone + "!";
     // generate link to zone growing info
-    zoneLink.href = "https://www.gardenate.com/?zone=" + data.zone;
+    zoneLink.href = "https://www.gardenate.com/?zone=" + data.hardiness_zone;
     zoneLink.target = "_blank";
     zoneLink.innerText = "Click here to see what you can grow in your zone!";
   });
