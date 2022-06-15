@@ -177,17 +177,23 @@ var show = function () {
 // API to pull agricultural zone
 var getAgZone = function (getZip) {
 	// stitch the zipcode into the API URL
-	var agURL = 'https://c0bra.api.stdlib.com/zipcode-to-hardiness-zone/?zipcode=' + getZip;
-	console.log(agURL);
-	fetch(agURL)
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Host': 'plant-hardiness-zone.p.rapidapi.com',
+      'X-RapidAPI-Key': 'f720bff0aemsh09e18b403689183p139bd3jsn8f600209aac2'
+    }
+  };
+  const agURL = `https://plant-hardiness-zone.p.rapidapi.com/zipcodes/${getZip}`;
+	fetch(agURL, options)
 		.then(function (response) {
 			return response.json();
 		})
 		.then(function (data) {
 			console.log(data)
-			zoneResults.textContent = 'You live in Zone ' + data.zone + '!';
+			zoneResults.textContent = 'You live in Zone ' + data.hardiness_zone + '!';
 			// generate link to zone growing info
-			zoneLink.href = 'https://www.gardenate.com/?zone=' + data.zone;
+			zoneLink.href = 'https://www.gardenate.com/?zone=' + data.hardiness_zone;
 			zoneLink.target = '_blank';
 			zoneLink.innerText = 'Click here to see what you can grow in your zone!';
 		});
