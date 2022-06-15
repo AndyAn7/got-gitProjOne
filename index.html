@@ -1,131 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png">
-    <title>Sprout Spy</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="icon" type="image/x-icon" href="./assets/images/favicon.png">
+	<title>Sprout Spy</title>
 </head>
 
 <body>
-    <div class="classNav">
-    <h1 class="headerT">Sprout Spy</h1>
-    <img src="./assets/images/favicon.png">
-    </div>
-    <header id="weather-wrapper">
-        <div class="wrapper weather-wrapper">
-            <i class="bx bx-left-arrow-alt">Weather Forecast</i>
-            <section class="input-part">
-                <p class="info-txt">Please enter a valid city name</p>
-                <input type="text" placeholder="Enter city name" spellcheck="false" required>
-                <div class="separator"></div>
-                <button>Get Device Location</button>
-            </section>
-            <section class="weather-part">
-                <img src="./assets/images/png/001-sun.png" alt="Weather Icon">
-                <div class="temp">
-                    <span class="numb">26</span>
-                    <span class="deg">º</span>C
-                </div>
-                <div class="weather">Broken Clouds</div>
-                <div class="location">
-                    <i class="iconify" data-icon="bx:bx-map"></i>
-                    <span>Tacoma, Washington</span>
-                </div>
-                <div class="bottom-details">
-                    <div class="column feels">
-                        <i class="iconify" data-icon="bx:bxs-thermometer"></i>
-                        <div class="details">
-                            <div class="temp">
-                                <span class="numb">24</span>
-                                <span class="deg">º</span>C
-                            </div>
-                            <p>Feels like</p>
-                        </div>
-                    </div>
-                    <div class="column humidity">
-                        <i class="iconify" data-icon="bx:bxs-droplet-half"></i>
-                        <div class="details">
-                            <span class="numb">69%</span>
-                            <p>Humidity</p>
-                        </div>
-                        <p>Feels like</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </header>
-    
-    <main>   
+	<div class="classNav">
+		<h1 class="headerT">Sprout Spy</h1>
+		<img src="./assets/images/favicon.png">
+	</div>
+	<header id="weather-wrap">
+		<div class="wrapper weather-wrapper">
+			<i class="iconify" data-icon="bx:bx-left-arrow-alt">Weather Report</i>
+			<section class="input-part">
+				<p class="info-txt">Please enter a valid city name</p>
+				<input type="text" placeholder="Enter city name" spellcheck="false" required>
+				<div class="separator"></div>
+				<button>Get Device Location</button>
+			</section>
+			<section class="weather-part">
+				<img src="./assets/images/png/001-sun.png" alt="Weather Icon">
+				<div class="temp">
+					<span id="temperature" class="numb">26</span>
+					<span class="deg">º</span>F
+				</div>
+				<div class="weather">Broken Clouds</div>
+				<div class="location">
+					<i class="iconify" data-icon="bx:bx-map"></i>
+					<span id="weather-location">Tacoma</span>
+				</div>
+				<div class="bottom-details">
+					<div class="column feels">
+						<i class="iconify" data-icon="bx:bxs-thermometer"></i>
+						<div class="details">
+							<div class="temp">
+								<span id="feels-like" class="numb">24</span>
+								<span class="deg">º</span>F
+							</div>
+							<p>Feels like</p>
+						</div>
+					</div>
+					<div class="column humidity">
+						<i class="iconify" data-icon="bx:bxs-droplet-half"></i>
+						<div class="details">
+							<span id="humidity" class="numb">69</span>%
+							<p>Humidity</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</header>
+
+	<main>
 
 		<!-- Header/instructions placeholder -->
-	    <section id="instructions" class="jumbotron">
-            <section id="jumboContainer" class="container">
-                <h1 class="display-4"></h1>
-                <p class="Plantinstructions"></p>
-            </section>
-	    </section>
+		<section id="instructions" class="jumbotron">
+			<section id="jumboContainer" class="container">
+				<h1 class="display-4"></h1>
+				<p class="Plantinstructions"></p>
+			</section>
+		</section>
 
 		<!-- Welcome Modal -->
-	    <section class="modal" title="Welcome to Sprout Spy">
-            <p>We are so excited to have you here to learn about gardening!</p>
-            <p>Are you ready to become a Sprout Spy?</p>
-	    </section>
+		<section class="modal" title="Welcome to Sprout Spy">
+			<h2>We are so excited to have you here to learn about gardening!</h2>
+
+			<p>This place is intended to become the internet home for all gardeners out there. At present you can search community gardens near the zip code you enter
+				as well as get your growing zone based on the zip code. We also link out to the gardenate site to figure out what you can grow now. In the near future
+				we will be implementing more functionality to the site to make it shine!
+			</p>
+			<p>Are you ready to become a Sprout Spy?</p>
+		</section>
 
 		<!--The div element for the map -->
-	    <form>
-            <label for="zip" id="text1"><span class="columnBreak">Local</span><span class="columnBreak">Garden</span><span class="columnBreak">Map</span></label><br>
-            <input id="zip" name="zip" type="text" pattern="[0-9]*">
-            <input type="submit" value="Submit" id="button1">
-        </form>
-	    <section id="localgardenmap"></section>
+		<form>
+			<label for="zip" id="text1"><span class="columnBreak">Local</span><span class="columnBreak">Garden</span><span
+					class="columnBreak">Map</span></label><br>
+			<input id="zip" name="zip" type="text" pattern="[0-9]*">
+			<input type="submit" value="Submit" id="button1">
+		</form>
+		<section id="localgardenmap"></section>
 
 		<!--The div element for the map -->
-	    <!-- gitr -->
+		<!-- gitr -->
 
-        <section class="results">
-            <h3 class="zoneResults"></h3>
-            <a id="zoneLink"></a>
-        </section>
+		<section class="results">
+			<h3 class="zoneResults"></h3>
+			<a id="zoneLink"></a>
+		</section>
 
-        <!-- glossary, for fun. Feel free to move outside of <main> if needed for styling purpose! -->
-        <section>
-            <ul class="glossary">
-                <li><strong>Starts/Cuttings:</strong> (noun) Juvenile plants, typically purchased from a nursery or garden store. A nursery has already done the work of getting the seeds to sprout in a greenhouse and getting the plant old enough to survive being planted outside in your garden.</li>
-                <li><strong>Transplant:</strong> (verb) When you take your start (obtained either from the store or from a seed you grew yourself) and remove it from it's smaller container and plant it in the garden bed. Pre-dig the hole it will go in and make sure it is a little deeper than the pot your start came in. While holding your start over your hole, turn the start upside down and gently shake or squeeze the pot to coax the start out. Any nutrient and fertilizer-rich soil will drop down into the hole where that plant can still benefit from it! Place your start into the hole, being careful not to smash the roots. Use soil to fill in around the plant, adding a bit more around the stem (fresh soil often compacts when watered so it is a good idea to bring the soil a little higher around the plant than it was before).</li>
-                <li><strong>Spacing:</strong> (noun) Refers to the space a plant needs when full grown. Seeds and starts are small but often grow into mighty plants! You should consider planting your starts with as much space between them and other plants as is suggested.
-                    <br>NOTE For seeds: Not all seeds will grow and thrive. Seed packets may suggest sowing the seeds close together and then thinning.</li>
-                <li><strong>Thinning:</strong> (verb) The process of pulling the less-healthy sprouts around the healthier sprouts. Ultimately you want your sprouts that stay to have the recommended spacing for a fully grown plant.</li>
-                <li><strong>Sowing:</strong> (verb) This relates to planting from seeds and refers to placing the seeds directly in the ground. Pay attention to the planting depth! Some seeds need to have more dirt over the top of them than others.</li>
-                <li><strong>Sun:</strong> (noun) Different plants require different amounts of light during the day to grow. Here is a breakdown of what you might see, keep in mind these times refer to the time sun is shining directly on that plant, not how many hours of daylight you have!
-                    <ul class="subGlossary">
-                        <li><strong>Full Sun:</strong> 6 or more hours of direct sun per day.</li>
-                        <li><strong>Part Sun:</strong> 4 to 6 hours of direct sun per day, including some afternoon sun.</li>
-                        <li><strong>Part Shade:</strong> 4 to 6 hours of sun per day, mostly before midday.</li>
-                        <li><strong>Full Shade:</strong> Less than 4 hours of direct sun per day.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
+		<!-- glossary, for fun. Feel free to move outside of <main> if needed for styling purpose! -->
+		<section>
+			<ul class="glossary">
+				<li><strong>Starts/Cuttings:</strong> (noun) Juvenile plants, typically purchased from a nursery or garden
+					store. A nursery has already done the work of getting the seeds to sprout in a greenhouse and getting the
+					plant old enough to survive being planted outside in your garden.</li>
+				<li><strong>Transplant:</strong> (verb) When you take your start (obtained either from the store or from a
+					seed you grew yourself) and remove it from it's smaller container and plant it in the garden bed. Pre-dig
+					the hole it will go in and make sure it is a little deeper than the pot your start came in. While holding
+					your start over your hole, turn the start upside down and gently shake or squeeze the pot to coax the
+					start out. Any nutrient and fertilizer-rich soil will drop down into the hole where that plant can still
+					benefit from it! Place your start into the hole, being careful not to smash the roots. Use soil to fill
+					in around the plant, adding a bit more around the stem (fresh soil often compacts when watered so it is a
+					good idea to bring the soil a little higher around the plant than it was before).</li>
+				<li><strong>Spacing:</strong> (noun) Refers to the space a plant needs when full grown. Seeds and starts are
+					small but often grow into mighty plants! You should consider planting your starts with as much space
+					between them and other plants as is suggested.
+					<br>NOTE For seeds: Not all seeds will grow and thrive. Seed packets may suggest sowing the seeds close
+					together and then thinning.
+				</li>
+				<li><strong>Thinning:</strong> (verb) The process of pulling the less-healthy sprouts around the healthier
+					sprouts. Ultimately you want your sprouts that stay to have the recommended spacing for a fully grown
+					plant.</li>
+				<li><strong>Sowing:</strong> (verb) This relates to planting from seeds and refers to placing the seeds
+					directly in the ground. Pay attention to the planting depth! Some seeds need to have more dirt over the
+					top of them than others.</li>
+				<li><strong>Sun:</strong> (noun) Different plants require different amounts of light during the day to grow.
+					Here is a breakdown of what you might see, keep in mind these times refer to the time sun is shining
+					directly on that plant, not how many hours of daylight you have!
+					<ul class="subGlossary">
+						<li><strong>Full Sun:</strong> 6 or more hours of direct sun per day.</li>
+						<li><strong>Part Sun:</strong> 4 to 6 hours of direct sun per day, including some afternoon sun.</li>
+						<li><strong>Part Shade:</strong> 4 to 6 hours of sun per day, mostly before midday.</li>
+						<li><strong>Full Shade:</strong> Less than 4 hours of direct sun per day.</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
 
-        <!-- zipcode error modal -->
-        <section class="zipModal" title="Error">
-            <p>Your zipcode should be 5 digits!</p>
-        </section>
+		<!-- zipcode error modal -->
+		<section class="zipModal" title="Error">
+			<p>Your zipcode should be 5 digits!</p>
+		</section>
 
-    </main>
+	</main>
 
-    <footer><img src="https://cdn-icons-png.flaticon.com/512/2796/2796224.png" alt="Sprout Spy Logo" width:10px></footer>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="./assets/js/initMap.js"></script>
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-9BRrSkX6Lxo5ckcJ0ogdvMOyWhA2QvQ&libraries=places&callback=initMap"></script>
-    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
-    <script defer src="./assets/js/script.js"></script>
+	<footer><img src="https://cdn-icons-png.flaticon.com/512/2796/2796224.png" alt="Sprout Spy Logo" width:10px></footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="./assets/js/initMap.js"></script>
+	<script defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-9BRrSkX6Lxo5ckcJ0ogdvMOyWhA2QvQ&libraries=places&callback=initMap"></script>
+	<script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+	<script defer src="./assets/js/script.js"></script>
 
 </body>
+
 </html>
