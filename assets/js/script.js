@@ -184,7 +184,7 @@ var getAgZone = function (getZip) {
       'X-RapidAPI-Key': 'f720bff0aemsh09e18b403689183p139bd3jsn8f600209aac2'
     }
   };
-  const agURL = `https://plant-hardiness-zone.p.rapidapi.com/zipcodes/${getZipCode}`;
+  const agURL = `https://plant-hardiness-zone.p.rapidapi.com/zipcodes/${getZip}`;
 	fetch(agURL, options)
 		.then(function (response) {
 			return response.json();
